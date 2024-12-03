@@ -1,0 +1,28 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Therapy Session Recorder" icon="" />
+
+    <StackLayout class="p-4">
+        <Label text="{{ recordingStatus }}" class="text-xl text-center mb-4" />
+        
+        <Button text="{{ isRecording ? 'Stop Recording' : 'Start Recording' }}" 
+                tap="{{ toggleRecording }}" 
+                class="{{ isRecording ? 'bg-red-500' : 'bg-green-500' }} text-white p-4 rounded-lg mb-4" />
+        
+        <ScrollView height="60%">
+            <StackLayout class="p-4 bg-gray-100 rounded-lg">
+                <Label text="Session Analytics" class="text-lg font-bold mb-2" />
+                <Label text="{{ currentMetrics }}" textWrap="true" class="text-base" />
+                
+                <Label text="Previous Sessions" class="text-lg font-bold mt-4 mb-2" />
+                <ListView items="{{ previousSessions }}" height="200">
+                    <ListView.itemTemplate>
+                        <StackLayout class="p-2">
+                            <Label text="{{ date }}" class="font-bold" />
+                            <Label text="{{ metrics }}" textWrap="true" />
+                        </StackLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</Page>
